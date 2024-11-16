@@ -1,0 +1,66 @@
+You are using a model of type llava to instantiate a model of type llava_llama. This is not supported for all configurations of models and can yield errors.
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:08<00:08,  8.26s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  3.84s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.51s/it]
+WARNING:accelerate.big_modeling:Some parameters are on the meta device because they were offloaded to the cpu.
+  0%|          | 0/1061 [00:00<?, ?it/s]  0%|          | 1/1061 [02:05<36:49:40, 125.08s/it]  0%|          | 2/1061 [02:10<16:05:58, 54.73s/it]   0%|          | 3/1061 [02:23<10:27:09, 35.57s/it]  0%|          | 3/1061 [02:25<14:13:55, 48.43s/it]
+Traceback (most recent call last):
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/amulyam/Projects/LLaVA/llava/eval/model_vqa_science.py", line 113, in <module>
+    eval_model(args)
+  File "/home/amulyam/Projects/LLaVA/llava/eval/model_vqa_science.py", line 76, in eval_model
+    output_ids = model.generate(
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/amulyam/Projects/LLaVA/llava/model/language_model/llava_llama.py", line 137, in generate
+    return super().generate(
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/generation/utils.py", line 2215, in generate
+    result = self._sample(
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/generation/utils.py", line 3206, in _sample
+    outputs = self(**model_inputs, return_dict=True)
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/accelerate/hooks.py", line 170, in new_forward
+    output = module._old_forward(*args, **kwargs)
+  File "/home/amulyam/Projects/LLaVA/llava/model/language_model/llava_llama.py", line 91, in forward
+    return super().forward(
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 1190, in forward
+    outputs = self.model(
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 945, in forward
+    layer_outputs = decoder_layer(
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/accelerate/hooks.py", line 170, in new_forward
+    output = module._old_forward(*args, **kwargs)
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 692, in forward
+    hidden_states = self.mlp(hidden_states)
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/accelerate/hooks.py", line 170, in new_forward
+    output = module._old_forward(*args, **kwargs)
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 258, in forward
+    down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/accelerate/hooks.py", line 165, in new_forward
+    args, kwargs = module._hf_hook.pre_forward(module, *args, **kwargs)
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/accelerate/hooks.py", line 355, in pre_forward
+    set_module_tensor_to_device(
+  File "/home/amulyam/miniconda3/envs/llava/lib/python3.10/site-packages/accelerate/utils/modeling.py", line 329, in set_module_tensor_to_device
+    new_value = value.to(device)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 86.00 MiB. GPU 0 has a total capacity of 11.90 GiB of which 47.62 MiB is free. Including non-PyTorch memory, this process has 11.86 GiB memory in use. Of the allocated memory 11.53 GiB is allocated by PyTorch, and 170.72 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
