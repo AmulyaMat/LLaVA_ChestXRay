@@ -673,21 +673,47 @@ class LazySupervisedDataset(Dataset):
         return len(self.list_data_dict)
 
     @property
+    # def lengths(self):
+    #     length_list = []
+    #     for sample in self.list_data_dict:
+    #         img_tokens = 128 if 'image' in sample else 0
+    #         length_list.append(sum(len(conv['value'].split()) for conv in sample['conversations']) + img_tokens)
+    #     return length_list
+
+    # @property
+    # def modality_lengths(self):
+    #     length_list = []
+    #     for sample in self.list_data_dict:
+    #         cur_len = sum(len(conv['value'].split()) for conv in sample['conversations'])
+    #         cur_len = cur_len if 'image' in sample else -cur_len
+    #         length_list.append(cur_len)
+    #     return length_list
+
+
     def lengths(self):
         length_list = []
         for sample in self.list_data_dict:
             img_tokens = 128 if 'image' in sample else 0
-            length_list.append(sum(len(conv['value'].split()) for conv in sample['conversations']) + img_tokens)
+            text_length = sum(
+                len(conv['value'].split()) if isinstance(conv['value'], str) else 0
+                for conv in sample['conversations']
+            )
+            length_list.append(text_length + img_tokens)
         return length_list
 
     @property
     def modality_lengths(self):
         length_list = []
         for sample in self.list_data_dict:
-            cur_len = sum(len(conv['value'].split()) for conv in sample['conversations'])
+            cur_len = sum(
+                len(conv['value'].split()) if isinstance(conv['value'], str) else 0
+                for conv in sample['conversations']
+            )
             cur_len = cur_len if 'image' in sample else -cur_len
             length_list.append(cur_len)
         return length_list
+
+
 
     def __getitem__(self, i) -> Dict[str, torch.Tensor]:
         sources = self.list_data_dict[i]
