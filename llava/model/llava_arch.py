@@ -61,7 +61,7 @@ class LlavaMetaModel:
             if fsdp is not None and len(fsdp) > 0:
                 self.vision_tower = [vision_tower]
             else:
-                self.vision_tower = vision_tower
+                self.vision_tower = vision_tower  
         else:
             if fsdp is not None and len(fsdp) > 0:
                 vision_tower = self.vision_tower[0]

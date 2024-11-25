@@ -8,7 +8,7 @@
     "min_loss_scale": 1
   },
   "bf16": {
-    "enabled": "auto"
+    "enabled": true
   },
   "optimizer": {
     "type": "AdamW",
@@ -17,14 +17,6 @@
       "betas": "auto",
       "eps": "auto",
       "weight_decay": "auto"
-    }
-  },
-  "scheduler": {
-    "type": "WarmupLR",
-    "params": {
-      "warmup_min_lr": "auto",
-      "warmup_max_lr": "auto",
-      "warmup_num_steps": "auto"
     }
   },
   "zero_optimization": {
@@ -45,7 +37,7 @@
     "stage3_param_persistence_threshold": "auto",
     "stage3_max_live_parameters": 1e9,
     "stage3_max_reuse_distance": 1e9,
-    "stage3_gather_16bit_weights_on_model_save": true
+    "gather_16bit_weights_on_model_save": true
   },
   "gradient_accumulation_steps": "auto",
   "gradient_clipping": "auto",
